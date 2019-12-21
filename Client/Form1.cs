@@ -40,7 +40,7 @@ namespace Client
         {
             try
             {
-                a.sendMessage("rozlaczenie polaczenia! ", connectOptions);
+                a.sendMessage("500", connectOptions);
                 connectOptions.Close();
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
             }
