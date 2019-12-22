@@ -33,15 +33,25 @@ namespace Client
         
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
             //try loggin to APP code 101
             String code = "101";
             String email = textBox1.Text;
             String password = textBox2.Text;
 
-            string str = convert.encodeBase64string(email + "~" + password);
+          //  string str = convert.encodeBase64string(email + "~" + password);
 
+            Model.ConverterMD5 encode = new Model.ConverterMD5();
+            string pass = encode.encodeMD5(password);
+            
+            string data = email + "~" + pass;
+
+            Model.Base64Converter _encodeData = new Model.Base64Converter();
+            data = _encodeData.encodeBase64string(data);
+
+            Controller.ServerConnect send = new Controller.ServerConnect();
+            send.sendMessage(code+"~" + data, connectOptions);
+
+            /*
             ASCIIEncoding asen = new ASCIIEncoding();
             byte[] ba = asen.GetBytes(code+"~"+str);
             Console.WriteLine("Transmitting.....");
@@ -57,7 +67,7 @@ namespace Client
                 test += Convert.ToChar(bb[i]);
 
             Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
-
+            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -66,10 +76,7 @@ namespace Client
             Hide();
             registerPanel.tcpclnt = connectOptions;
             registerPanel.serverObject = serverObject;
-            registerPanel.Show();
-            
-
-
+            registerPanel.Show();           
         }
 
         

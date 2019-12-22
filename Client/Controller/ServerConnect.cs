@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Net.Sockets;
 using System.Net;
+using System.Windows.Forms;
 
 namespace Client.Controller
 {
@@ -50,14 +51,9 @@ namespace Client.Controller
             byte[] ba = asen.GetBytes(str);
             Console.WriteLine("Transmitting.....");
 
-
-
-
-
             Stream stm = tcpclnt.GetStream();
 
             stm.Write(ba, 0, ba.Length);
-
             byte[] bb = new byte[256];
             int k = stm.Read(bb, 0, 256);
             string test = "";
@@ -76,17 +72,28 @@ namespace Client.Controller
             byte[] ba = asen.GetBytes(str);
             Console.WriteLine("Transmitting.....");
 
-            Stream stm = tcpclnt.GetStream();
+            for (var j = 0; j < 2; j++)
+            {
+                Stream stm = tcpclnt.GetStream();
 
-            stm.Write(ba, 0, ba.Length);
+                stm.Write(ba, 0, ba.Length);
 
-            byte[] bb = new byte[256];
-            int k = stm.Read(bb, 0, 256);
-            string test = "";
-            for (int i = 0; i < k; i++)
-                test += Convert.ToChar(bb[i]);
+                byte[] bb = new byte[256];
+                int k = stm.Read(bb, 0, 256);
+                string test = "";
+                for (int i = 0; i < k; i++)
+                    test += Convert.ToChar(bb[i]);
+                if(j == 1)
+                    if(test == "200")
+                    {
+                        MessageBox.Show("You have access!!", "Congratulation", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("You DONT have access!!", "ERR", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
-        }
+                    }
+            }
+            }
     }
 }
