@@ -16,25 +16,13 @@ namespace Client
 {
     public partial class Form1 : Form
     {
-
-        private Client.Options.ConnectToServer clnt { get; set; }
-
         
-
 
         public TcpClient connectOptions { get; set; }
         public Controller.ServerConnect a { get; set; }
         public Form1()
         {
             InitializeComponent();
-
-            Client.Options.ConnectToServer createConnect = new Client.Options.ConnectToServer();         
-            createConnect.createConnect();
-            clnt = createConnect;
-
-        }
-        private TcpClient tcpclnt { get;set;} 
-
             Controller.ServerConnect createConnect = new Controller.ServerConnect();
             a = createConnect;
             connectOptions = createConnect.connect();
@@ -65,20 +53,34 @@ namespace Client
             this.tcpclnt = new TcpClient();
             Console.WriteLine("Connecting.....");
 
+            tcpclnt.Connect("127.0.0.1", 10000);
+            // use the ipaddress as in the server program
 
+            Console.WriteLine("Connected");
+            Console.Write("Enter the string to be transmitted : ");
 
-        private void button1_Click_1(object sender, EventArgs e)
-        {
+            String str = "to jest jakis moj tam text";
             
-            Client.Users.RegisterNewUser registerUser = new Client.Users.RegisterNewUser();
+
+            ASCIIEncoding asen = new ASCIIEncoding();
+            byte[] ba = asen.GetBytes(str);
+            Console.WriteLine("Transmitting.....");
 
 
 
-            registerUser.catchData(textBox1.Text, textBox2.Text, clnt);
 
 
-        }
+            Stream stm = tcpclnt.GetStream();
 
+            stm.Write(ba, 0, ba.Length);
+
+            byte[] bb = new byte[256];
+            int k = stm.Read(bb, 0, 256);
+            string test="" ;
+            for (int i = 0; i < k; i++)
+                test += Convert.ToChar(bb[i]);
+
+            Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
 
     */
 
@@ -98,6 +100,20 @@ namespace Client
 
 
 
+           
 
+            Stream stm = tcpclnt.GetStream();
+
+            stm.Write(ba, 0, ba.Length);
+
+            byte[] bb = new byte[256];
+            int k = stm.Read(bb, 0, 256);
+            string test = "";
+            for (int i = 0; i < k; i++)
+                test += Convert.ToChar(bb[i]);
+
+            Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
+
+        }
     }
 }
