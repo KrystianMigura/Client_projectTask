@@ -76,7 +76,6 @@ namespace Client.Controller
             byte[] ba = asen.GetBytes(str);
             Console.WriteLine("Transmitting.....");
 
-
             Stream stm = tcpclnt.GetStream();
 
             stm.Write(ba, 0, ba.Length);
