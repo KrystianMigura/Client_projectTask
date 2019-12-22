@@ -1,0 +1,9 @@
+﻿#lista kodów
+# 100 - pierwsze polaczenie
+# 101 - proba logowania
+# 102 - proba rejestracji
+# 103 - wyslanie zapytania do sql
+# 104 - insert w sql
+# 105 - delete w sql
+# 106 - update w sql
+------------------------------
