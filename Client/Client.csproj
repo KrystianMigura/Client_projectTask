@@ -50,7 +50,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controller\ServerConnect.cs" />
+    <Compile Include="Controller\ServiceCodeNumber.cs" />
     <Compile Include="Model\ConverterMD5.cs" />
+    <Compile Include="View\ClientPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ClientPanel.Designer.cs">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\LoginPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +73,9 @@
     <Compile Include="View\RegisterPanel.Designer.cs">
       <DependentUpon>RegisterPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\ClientPanel.resx">
+      <DependentUpon>ClientPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\LoginPanel.resx">
       <DependentUpon>LoginPanel.cs</DependentUpon>
     </EmbeddedResource>

@@ -44,7 +44,7 @@ namespace Client.Controller
             Console.WriteLine("Connected");
             Console.Write("Enter the string to be transmitted : ");
 
-            String str = "Ip addr: " + myIp + " Connected to server.";
+            String str = "20~Ip addr: " + myIp + " Connected to server.";
 
 
             ASCIIEncoding asen = new ASCIIEncoding();
@@ -72,28 +72,31 @@ namespace Client.Controller
             byte[] ba = asen.GetBytes(str);
             Console.WriteLine("Transmitting.....");
 
-            for (var j = 0; j < 2; j++)
+            Stream stm = tcpclnt.GetStream();
+
+            stm.Write(ba, 0, ba.Length);
+
+            byte[] bb = new byte[256];
+            int k = stm.Read(bb, 0, 256);
+            string test = "";
+            for (int i = 0; i < k; i++)
             {
-                Stream stm = tcpclnt.GetStream();
-
-                stm.Write(ba, 0, ba.Length);
-
-                byte[] bb = new byte[256];
-                int k = stm.Read(bb, 0, 256);
-                string test = "";
-                for (int i = 0; i < k; i++)
-                    test += Convert.ToChar(bb[i]);
-                if(j == 1)
-                    if(test == "200")
-                    {
-                        MessageBox.Show("You have access!!", "Congratulation", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                    else
-                    {
-                        MessageBox.Show("You DONT have access!!", "ERR", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    }
+                test += Convert.ToChar(bb[i]);
             }
+            char[] separator = { '~' };
+            String[] paramStr = test.Split(separator);
+
+            Model.Base64Converter cnwt = new Model.Base64Converter();
+            String ttt = "";
+
+            if (paramStr.Length > 1)
+            {
+                ttt = cnwt.decodeBase64string(paramStr[1]);
             }
+
+            Console.WriteLine(paramStr[0] + " XXXXXXXXXXXXXXXXXX " + ttt); // only correct value
+            Client.Controller.ServiceCodeNumber codeService = new Controller.ServiceCodeNumber();
+            codeService.codeArg(paramStr[0], ttt);
+        }
     }
 }
