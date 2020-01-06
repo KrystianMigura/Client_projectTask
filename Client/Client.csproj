@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="Controller\ServerConnect.cs" />
     <Compile Include="Controller\ServiceCodeNumber.cs" />
+    <Compile Include="Model\ClientPanelButtons.cs" />
     <Compile Include="Model\ConverterMD5.cs" />
     <Compile Include="View\ClientPanel.cs">
       <SubType>Form</SubType>
@@ -91,6 +92,7 @@
     <EmbeddedResource Include="View\RegisterPanel.resx">
       <DependentUpon>RegisterPanel.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="json1.json" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -104,6 +106,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

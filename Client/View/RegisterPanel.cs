@@ -52,7 +52,7 @@ namespace Client.View
             val = encode.encodeBase64string(val);
 
             Controller.ServerConnect send = new Controller.ServerConnect();
-            send.sendMessage("100~"+val, tcpclnt);
+            send.sendMessage("100~"+val, tcpclnt, "",null);
 
             foreach (Form f in Application.OpenForms)
             {

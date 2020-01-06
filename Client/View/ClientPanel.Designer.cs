@@ -34,6 +34,14 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.resolver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.information = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dateResolved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // button1
@@ -44,6 +52,7 @@
             this.button1.TabIndex = 0;
             this.button1.Text = "All Task";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
@@ -90,12 +99,61 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "personal information";
             // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.resolver,
+            this.title,
+            this.information,
+            this.dateCreated,
+            this.dateResolved});
+            this.dataGridView1.Location = new System.Drawing.Point(143, 82);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.Size = new System.Drawing.Size(568, 301);
+            this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
+            // 
+            // id
+            // 
+            this.id.FillWeight = 25F;
+            this.id.HeaderText = "id";
+            this.id.Name = "id";
+            this.id.Width = 25;
+            // 
+            // resolver
+            // 
+            this.resolver.HeaderText = "resolver";
+            this.resolver.Name = "resolver";
+            // 
+            // title
+            // 
+            this.title.HeaderText = "title";
+            this.title.Name = "title";
+            // 
+            // information
+            // 
+            this.information.HeaderText = "information";
+            this.information.Name = "information";
+            // 
+            // dateCreated
+            // 
+            this.dateCreated.HeaderText = "dateCreated";
+            this.dateCreated.Name = "dateCreated";
+            // 
+            // dateResolved
+            // 
+            this.dateResolved.HeaderText = "dateResolved";
+            this.dateResolved.Name = "dateResolved";
+            // 
             // ClientPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.ClientSize = new System.Drawing.Size(749, 395);
+            this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
@@ -104,6 +162,7 @@
             this.Controls.Add(this.button1);
             this.Name = "ClientPanel";
             this.Text = "ClientPanel";
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -117,5 +176,12 @@
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button button5;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn id;
+        private System.Windows.Forms.DataGridViewTextBoxColumn resolver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn title;
+        private System.Windows.Forms.DataGridViewTextBoxColumn information;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateCreated;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dateResolved;
     }
 }

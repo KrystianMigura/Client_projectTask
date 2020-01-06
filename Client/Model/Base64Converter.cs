@@ -19,9 +19,14 @@ namespace Client.Model
 
         public string decodeBase64string(String value)
         {
-            var base64EncodedBytes = System.Convert.FromBase64String(value);
-            return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
-           
+            try
+            {
+                var base64EncodedBytes = System.Convert.FromBase64String(value);
+                return System.Text.Encoding.UTF8.GetString(base64EncodedBytes);
+            }catch(Exception err)
+            {
+                return "CONVERT ERROR!" + value;
+            }
         }
     }
 }

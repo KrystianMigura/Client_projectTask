@@ -1,0 +1,15 @@
+{
+  "20": "pierwsze polaczenie",
+  "120": "rejestracja ok",
+  "100": "rejestracja",
+  "101": "logowanie",
+  "102": "dodaj task",
+  "103": "update task",
+  "104": "pobierz wszystkie taski",
+  "105": "aktualizacja danych usera",
+  "106": "pobierz tylko moje taski",
+  "200": "logowanie ok",
+  "404": "blad",
+  "500": "wyjscie klienta",
+  "114":  "poprawne pobranie danych"
+}

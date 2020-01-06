@@ -66,7 +66,7 @@ namespace Client.Controller
         }
 
 
-        public void sendMessage(String str, TcpClient tcpclnt)
+        public void sendMessage(String str, TcpClient tcpclnt, string alltask, DataGridView panel)
         {
             ASCIIEncoding asen = new ASCIIEncoding();
             byte[] ba = asen.GetBytes(str);
@@ -76,8 +76,8 @@ namespace Client.Controller
 
             stm.Write(ba, 0, ba.Length);
 
-            byte[] bb = new byte[256];
-            int k = stm.Read(bb, 0, 256);
+            byte[] bb = new byte[1048576];
+            int k = stm.Read(bb, 0, 1048576);
             string test = "";
             for (int i = 0; i < k; i++)
             {
@@ -89,14 +89,25 @@ namespace Client.Controller
             Model.Base64Converter cnwt = new Model.Base64Converter();
             String ttt = "";
 
+
+                
+            
+
             if (paramStr.Length > 1)
             {
-                ttt = cnwt.decodeBase64string(paramStr[1]);
-            }
-
+                try
+                {
+                    ttt = cnwt.decodeBase64string(paramStr[1]);
+                }catch(Exception err)
+                {
+                    ttt = cnwt.decodeBase64string(paramStr[0]);
+                }
+                }
+            
+            alltask = paramStr[0];
             Console.WriteLine(paramStr[0] + " XXXXXXXXXXXXXXXXXX " + ttt); // only correct value
             Client.Controller.ServiceCodeNumber codeService = new Controller.ServiceCodeNumber();
-            codeService.codeArg(paramStr[0], ttt);
+            codeService.codeArg(paramStr[0], ttt, tcpclnt, panel);
         }
     }
 }

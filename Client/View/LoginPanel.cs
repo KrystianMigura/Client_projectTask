@@ -49,7 +49,7 @@ namespace Client
             data = _encodeData.encodeBase64string(data);
 
             Controller.ServerConnect send = new Controller.ServerConnect();
-            send.sendMessage(code+"~" + data, connectOptions);
+            send.sendMessage(code+"~" + data, connectOptions, "",null);
 
             /*
             ASCIIEncoding asen = new ASCIIEncoding();
@@ -86,7 +86,7 @@ namespace Client
         {
             try
             {
-                serverObject.sendMessage("500", connectOptions);
+                serverObject.sendMessage("500", connectOptions, "",null);
                 connectOptions.Close();
                 Console.WriteLine("application is clossed!");
                 System.Diagnostics.Process.GetCurrentProcess().Kill();
