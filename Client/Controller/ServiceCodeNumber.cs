@@ -22,23 +22,26 @@ namespace Client.Controller
         public string information { get; set; }
         public string dateCreated { get; set; }
         public string dateResolved { get; set; }
+        public string status { get; set; }
 
-        
+
     }
 
     public class bass
     {
         public bass() { }
 
-        public void checkit(DataGridView dataPanel, String id, String resolver, String title, String information, String dataCreated, String dataResolved)
+        public void checkit(DataGridView dataPanel, String id, String resolver,String created, String title, String information, String dataCreated, String dataResolved, String status)
         {
             DataGridViewRow row = (DataGridViewRow)dataPanel.Rows[0].Clone();
             row.Cells[0].Value = id;
             row.Cells[1].Value = resolver;
             row.Cells[2].Value = title;
-            row.Cells[3].Value = information;
-            row.Cells[4].Value = dataCreated;
-            row.Cells[5].Value = dataResolved;
+            row.Cells[3].Value = created;
+            row.Cells[4].Value = information;
+            row.Cells[5].Value = dataCreated;
+            row.Cells[6].Value = dataResolved;
+            row.Cells[7].Value = status;
             dataPanel.Rows.Add(row);
         }
     }
@@ -58,17 +61,18 @@ namespace Client.Controller
                // DataGridViewRow row = (DataGridViewRow)dataPanel.Rows[0].Clone();
 
                 Console.WriteLine("no cos moze bedzie okeyy ale zobaczymy!" + ttt);
-                 string jsonObj = "["+ttt+"{id: \"dupa\"}]";
+                 string jsonObj = "["+ttt+"]";
 
                 //      JObject jv = (JObject)jsonObj;
                 // JObject aaa = (JObject)jsonObj;
                 //  string jsonObj = "[{id: 1, resolver: \"Krystian\"}]";
                 var tteesstt = JsonConvert.DeserializeObject<List<test>>(jsonObj);
+                dataPanel.Rows.Clear();
                 foreach (test p in tteesstt)
                 {
                     Console.WriteLine(p.id + " TO JEST ID!!!!");
                     // this.clntPanel.DUPA = p.id;
-                    mm.checkit(dataPanel, p.id, p.resolver,p.titleTask,p.information,p.dateCreated,p.dateResolved);
+                    mm.checkit(dataPanel, p.id, p.resolver,p.titleTask,p.created,p.information,p.dateCreated,p.dateResolved, p.status);
                 
 
                 }

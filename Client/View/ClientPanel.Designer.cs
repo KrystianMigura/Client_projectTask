@@ -37,10 +37,12 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.resolver = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.created = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.title = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.information = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateCreated = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dateResolved = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -105,13 +107,15 @@
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.id,
             this.resolver,
+            this.created,
             this.title,
             this.information,
             this.dateCreated,
-            this.dateResolved});
+            this.dateResolved,
+            this.status});
             this.dataGridView1.Location = new System.Drawing.Point(143, 82);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.Size = new System.Drawing.Size(568, 301);
+            this.dataGridView1.Size = new System.Drawing.Size(792, 301);
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -119,40 +123,74 @@
             // 
             this.id.FillWeight = 25F;
             this.id.HeaderText = "id";
+            this.id.MinimumWidth = 25;
             this.id.Name = "id";
+            this.id.ReadOnly = true;
+            this.id.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.id.Width = 25;
             // 
             // resolver
             // 
+            this.resolver.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.resolver.HeaderText = "resolver";
             this.resolver.Name = "resolver";
+            this.resolver.ReadOnly = true;
+            this.resolver.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // created
+            // 
+            this.created.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.created.HeaderText = "created";
+            this.created.Name = "created";
+            this.created.ReadOnly = true;
+            this.created.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // title
             // 
+            this.title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.title.HeaderText = "title";
             this.title.Name = "title";
+            this.title.ReadOnly = true;
+            this.title.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // information
             // 
+            this.information.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.information.HeaderText = "information";
             this.information.Name = "information";
+            this.information.ReadOnly = true;
+            this.information.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dateCreated
             // 
+            this.dateCreated.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dateCreated.HeaderText = "dateCreated";
             this.dateCreated.Name = "dateCreated";
+            this.dateCreated.ReadOnly = true;
+            this.dateCreated.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // dateResolved
             // 
+            this.dateResolved.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.dateResolved.HeaderText = "dateResolved";
             this.dateResolved.Name = "dateResolved";
+            this.dateResolved.ReadOnly = true;
+            this.dateResolved.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // status
+            // 
+            this.status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.status.HeaderText = "status";
+            this.status.Name = "status";
+            this.status.ReadOnly = true;
+            this.status.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             // 
             // ClientPanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(749, 395);
+            this.ClientSize = new System.Drawing.Size(947, 395);
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button5);
@@ -179,9 +217,11 @@
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.DataGridViewTextBoxColumn id;
         private System.Windows.Forms.DataGridViewTextBoxColumn resolver;
+        private System.Windows.Forms.DataGridViewTextBoxColumn created;
         private System.Windows.Forms.DataGridViewTextBoxColumn title;
         private System.Windows.Forms.DataGridViewTextBoxColumn information;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateCreated;
         private System.Windows.Forms.DataGridViewTextBoxColumn dateResolved;
+        private System.Windows.Forms.DataGridViewTextBoxColumn status;
     }
 }
