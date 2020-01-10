@@ -39,8 +39,8 @@ namespace Client.Controller
             row.Cells[2].Value = title;
             row.Cells[3].Value = created;
             row.Cells[4].Value = information;
-            row.Cells[5].Value = dataCreated;
-            row.Cells[6].Value = dataResolved;
+            row.Cells[5].Value = dataCreated.Remove(11);
+            row.Cells[6].Value = dataResolved.Length > 1 ?dataResolved.Remove(11):dataResolved;
             row.Cells[7].Value = status;
             dataPanel.Rows.Add(row);
         }
@@ -52,7 +52,16 @@ namespace Client.Controller
 
         public void codeArg(string code, string ttt, TcpClient tcpclnt, DataGridView panel)
         {
+            Console.WriteLine(code + " <<<<<<<<<<<<<<<<<<<<<<<<");
+
             DataGridView dataPanel = panel;
+            if(code == "112")
+            {
+                Console.WriteLine("CHYBA JEST OKEYYY!!");
+                
+            }
+
+
             if (code == "114")
             {
                 bass mm = new bass();
@@ -83,8 +92,38 @@ namespace Client.Controller
                 //       Console.WriteLine("TO JEST ID       " + jv); 
             }
 
+            if (code == "116")
+            {
+                bass mm = new bass();
+                //  mm.checkit(dataPanel, "aaa");
 
-            if(code == "200")
+                // DataGridViewRow row = (DataGridViewRow)dataPanel.Rows[0].Clone();
+
+                Console.WriteLine("no cos moze bedzie okeyy ale zobaczymy!" + ttt);
+                string jsonObj = "[" + ttt + "]";
+
+                //      JObject jv = (JObject)jsonObj;
+                // JObject aaa = (JObject)jsonObj;
+                //  string jsonObj = "[{id: 1, resolver: \"Krystian\"}]";
+                var tteesstt = JsonConvert.DeserializeObject<List<test>>(jsonObj);
+                dataPanel.Rows.Clear();
+                foreach (test p in tteesstt)
+                {
+                    Console.WriteLine(p.id + " TO JEST ID!!!!");
+                    // this.clntPanel.DUPA = p.id;
+                    mm.checkit(dataPanel, p.id, p.resolver, p.titleTask, p.created, p.information, p.dateCreated, p.dateResolved, p.status);
+
+
+                }
+
+
+                //  Console.WriteLine(tteesstt + " XXXXXXXXXXXXXXXXXXXZZZZZZZZZZZZZZZZZZZZZZZZ");
+                //  JObject jsonObject = JObject.Parse(aaa);
+                //       Console.WriteLine("TO JEST ID       " + jv); 
+            }
+
+
+            if (code == "200")
             {
                 Console.WriteLine("przeniesienie do wlasciwego miejsca zamkniecie starego okna nowy panel");
                 View.ClientPanel clntPanel1 = new View.ClientPanel();

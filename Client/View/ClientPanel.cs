@@ -46,9 +46,39 @@ namespace Client.View
             clientButton.allTask(tcpclnt, panel);
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            clientButton.myTask(tcpclnt, panel);
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            View.addTaskPanel _addTaskPanel = new addTaskPanel();
+            _addTaskPanel.Show();
+            _addTaskPanel.setCreatedPerson(email, tcpclnt, clientButton,null);
+            //102~
+            //set param who created
+        }
+
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+
+        private void ClientPanel_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            try
+            {
+                Console.WriteLine("application is clossed!");
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+        }
+
+
     }
 }

@@ -53,6 +53,13 @@
     <Compile Include="Controller\ServiceCodeNumber.cs" />
     <Compile Include="Model\ClientPanelButtons.cs" />
     <Compile Include="Model\ConverterMD5.cs" />
+    <Compile Include="Model\Validators.cs" />
+    <Compile Include="View\addTaskPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\addTaskPanel.Designer.cs">
+      <DependentUpon>addTaskPanel.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ClientPanel.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -74,6 +81,9 @@
     <Compile Include="View\RegisterPanel.Designer.cs">
       <DependentUpon>RegisterPanel.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\addTaskPanel.resx">
+      <DependentUpon>addTaskPanel.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ClientPanel.resx">
       <DependentUpon>ClientPanel.cs</DependentUpon>
     </EmbeddedResource>

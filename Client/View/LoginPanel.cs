@@ -26,7 +26,14 @@ namespace Client
             InitializeComponent();
             Controller.ServerConnect createConnect = new Controller.ServerConnect();
             serverObject = createConnect;
-            connectOptions = createConnect.connect();
+            try
+            {
+                connectOptions = createConnect.connect();
+            }catch(Exception problemInConnect)
+            {
+                MessageBox.Show("Sorry you have a problem in connect to server. \n Please check your connection and try again. \n Check working server application!", "Problem in connection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                System.Diagnostics.Process.GetCurrentProcess().Kill();
+            }
             Model.Base64Converter converter = new Model.Base64Converter();
             convert = converter;
         }
