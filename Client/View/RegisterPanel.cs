@@ -42,8 +42,6 @@ namespace Client.View
             string pass = encode.encodeMD5(password);
             string data = nick+"~"+ firstName + "~" + lastName + "~" + pass + "~" + email;
             sendParamToServer(data);
-
-
         }
 
         private void sendParamToServer(String val)

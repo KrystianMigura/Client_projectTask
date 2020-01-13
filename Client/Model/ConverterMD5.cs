@@ -12,7 +12,6 @@ namespace Client.Model
 
         public string encodeMD5(String pass)
         {
-            //encode pass from registerPanel
             System.Security.Cryptography.MD5 md5 = System.Security.Cryptography.MD5.Create();
             byte[] inputBytes = System.Text.Encoding.ASCII.GetBytes(pass);
             byte[] hash = md5.ComputeHash(inputBytes);

@@ -37,10 +37,6 @@ namespace Client.Controller
 
             Console.WriteLine("Connecting.....");
 
-            // use the ipaddress as in the server program
-
-
-
             Console.WriteLine("Connected");
             Console.Write("Enter the string to be transmitted : ");
 
@@ -60,7 +56,7 @@ namespace Client.Controller
             for (int i = 0; i < k; i++)
                 test += Convert.ToChar(bb[i]);
 
-            Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
+           // Console.WriteLine(test); response from server
 
             return tcpclnt;
         }
@@ -89,10 +85,6 @@ namespace Client.Controller
             Model.Base64Converter cnwt = new Model.Base64Converter();
             String ttt = "";
 
-
-                
-            
-
             if (paramStr.Length > 1)
             {
                 try
@@ -102,10 +94,9 @@ namespace Client.Controller
                 {
                     ttt = cnwt.decodeBase64string(paramStr[0]);
                 }
-                }
+            }
             
             alltask = paramStr[0];
-            Console.WriteLine(paramStr[0] + " XXXXXXXXXXXXXXXXXX " + ttt); // only correct value
             Client.Controller.ServiceCodeNumber codeService = new Controller.ServiceCodeNumber();
             codeService.codeArg(paramStr[0], ttt, tcpclnt, panel);
         }

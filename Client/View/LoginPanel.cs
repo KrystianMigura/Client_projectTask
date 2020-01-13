@@ -45,8 +45,6 @@ namespace Client
             String email = textBox1.Text;
             String password = textBox2.Text;
 
-          //  string str = convert.encodeBase64string(email + "~" + password);
-
             Model.ConverterMD5 encode = new Model.ConverterMD5();
             string pass = encode.encodeMD5(password);
             
@@ -57,24 +55,6 @@ namespace Client
 
             Controller.ServerConnect send = new Controller.ServerConnect();
             send.sendMessage(code+"~" + data, connectOptions, "",null);
-
-            /*
-            ASCIIEncoding asen = new ASCIIEncoding();
-            byte[] ba = asen.GetBytes(code+"~"+str);
-            Console.WriteLine("Transmitting.....");
-
-            Stream stm = connectOptions.GetStream();
-
-            stm.Write(ba, 0, ba.Length);
-
-            byte[] bb = new byte[256];
-            int k = stm.Read(bb, 0, 256);
-            string test = "";
-            for (int i = 0; i < k; i++)
-                test += Convert.ToChar(bb[i]);
-
-            Console.WriteLine(test);// automatyczna odpowiedź z servera !! jupi
-            */
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -85,10 +65,7 @@ namespace Client
             registerPanel.serverObject = serverObject;
             registerPanel.Show();           
         }
-
-        
-        
-
+               
         private void closedApplication(object sender, FormClosedEventArgs e)
         {
             try

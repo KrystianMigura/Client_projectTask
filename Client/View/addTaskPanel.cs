@@ -14,7 +14,6 @@ namespace Client.View
     {
         public String createdPerson { get; set; }
         public String nowTime { get; set; }
-
         private String status { get; set; }
         private String information { get; set; }
         private String titleTask { get; set; }
@@ -42,8 +41,6 @@ namespace Client.View
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-
             resolver = textBox1.Text;
             titleTask = textBox2.Text;
             information = textBox3.Text;
@@ -64,16 +61,6 @@ namespace Client.View
                 send.sendMessage(code + "~" + data, connect, "", null);
 
                 Close();
-
-                // clientButton.insertTask(connect,panel,param);
-
-                // Controller.ServerConnect send = new Controller.ServerConnect();
-                //  string code = "102";
-
-
-                //  send.sendMessage(code + "~"+ createdPerson + "/"+ nowTime + "/"+status+"/"+ information+"/"+ titleTask+"/"+ resolver, connect, "",null);
-
-                // Console.WriteLine("JEST OKE?" + resolver + " " + titleTask + " " + information + " " + status);
             }
             else
             {

@@ -13,7 +13,6 @@ namespace Client.View
 {
     public partial class ClientPanel : Form
     {
-        public String DUPA { get; set; }
         public String email { get; set; }
         public Model.ClientPanelButtons clientButton { get; set; }
         public TcpClient tcpclnt { get; set; }
@@ -29,10 +28,6 @@ namespace Client.View
             char[] separator = { '~' };
             String[] paramStr = param.Split(separator);
             this.email = paramStr[0];
-
-            //ask query for getting more information about user!!!!!
-            //displayed more information about user
-
             label1.Text = email;
         }
 
@@ -48,7 +43,7 @@ namespace Client.View
 
         private void button2_Click(object sender, EventArgs e)
         {
-            clientButton.myTask(tcpclnt, panel);
+            clientButton.myTask(tcpclnt, panel, email);
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -56,8 +51,6 @@ namespace Client.View
             View.addTaskPanel _addTaskPanel = new addTaskPanel();
             _addTaskPanel.Show();
             _addTaskPanel.setCreatedPerson(email, tcpclnt, clientButton,null);
-            //102~
-            //set param who created
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -79,6 +72,24 @@ namespace Client.View
             }
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            try
+            {               
+                foreach (Form f in Application.OpenForms)
+                {
+                    if(f.Name == "Form1")
+                    {
+                        f.Show();
+                        Hide();
+                    }
+                }
 
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine(err);
+            }
+        }
     }
 }
